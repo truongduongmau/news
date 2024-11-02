@@ -2,8 +2,9 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 export default async function Home() {
-  let data = await fetch('https://api.vercel.app/blog')
-  let posts = await data.json()
+  const data = await fetch('https://api.vercel.app/blog')
+  const posts = await data.json()
+  
   return (
     <div className={styles.page}>
       <main className={styles.main}>
