@@ -1,8 +1,11 @@
+import { redirect } from "next/navigation"
+import { NextRequest } from "next/server"
+
 export const revalidate = 60
  
-export async function GET() {
-  const data = await fetch('https://cafef.vn/doc-nhanh/trang-1.chn')
-  const posts = await data.text()
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams
+  const url = searchParams.get('url')
  
-  return Response.json({data: posts})
+  redirect(url || '/')
 }
