@@ -1,14 +1,13 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Home from "./home/page";
 
-export default async function Home() {
+export default async function App() {
   const url = "https://cafef.vn/doc-nhanh/trang-1.chn";
-  const data = await fetch(`http://localhost:3001/api?url=${url}`, { cache: 'no-store' })
-  const posts = await data.text()
-  console.log(posts)
+  const data = await fetch(`http://localhost:3000/api?url=${url}`, { cache: 'no-store' })
+  const content = await data.text()
+
   return (
     <>
-    <div>{posts}</div>
+      <Home content={content} />
     </>
   );
 }
