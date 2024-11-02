@@ -1,4 +1,4 @@
-import HomeMain from "../components/home/home-main";
+import HomeMain from "./home-main";
 
 const Home = async () => {
   const apiUrl = process.env.API_URL;
