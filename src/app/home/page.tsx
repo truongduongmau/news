@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import HomeContent from "../components/homeContent/page";
 
-const Home = ({ content }: { content: string }) => {
+const Home = ({ content = "" }: { content: string }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const nextPage = useCallback(() => {
