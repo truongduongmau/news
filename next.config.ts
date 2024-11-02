@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   //basePath: '/news',
   reactStrictMode: true,
-  //output: "export",
+  output: "export",
 };
 
 export default nextConfig;
