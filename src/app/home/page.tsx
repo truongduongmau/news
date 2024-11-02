@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import HomeContent from "../components/homeContent/page";
 
-const Home = ({ content }) => {
+const Home = ({ content }: { content: string }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const nextPage = useCallback(() => {
@@ -35,7 +35,7 @@ const Home = ({ content }) => {
             <div></div>
           </div>
         </div>
-        <div style={{cursor: "pointer"}} className="buttons"><button className="card card-small" onClick={() => nextPage()}>Đọc thêm</button></div>
+        <div style={{ cursor: "pointer" }} className="buttons"><button className="card card-small" onClick={() => nextPage()}>Đọc thêm</button></div>
       </div>
     </>
   );

@@ -1,11 +1,10 @@
 "use client"
 
 import useIsServer from "@/app/useHook/useIsServer";
-import { ReactElement, ReactNode, useEffect, useRef } from "react";
 
-const HomeContent = ({ content }) => {
+const HomeContent = ({ content }: { content: string }) => {
   const isServer = useIsServer()
-  const fastNews = useRef<HTMLDivElement>(null)
+
   if (isServer) return (<></>)
 
   const dom_document = new DOMParser().parseFromString(content, "text/html");
