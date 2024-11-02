@@ -2,7 +2,7 @@
 
 import useIsServer from "@/app/useHook/useIsServer";
 
-const HomeContent = ({ content }: { content: string }) => {
+const HomeItems = ({ content }: { content: string }) => {
   const isServer = useIsServer()
 
   if (isServer) return (<></>)
@@ -25,10 +25,9 @@ const HomeContent = ({ content }: { content: string }) => {
         </div>
       </div>
       <div className="nv-details">
-        <span className="time">(02/11/2024 17:19)</span>
         <div className="abs">{content}</div>
         <div className="text-right">
-          <a target="_blank" className="doctoanbo" href="/bat-dong-san-tpthu-duc-tang-toc-cuoi-nam-nho-vanh-dai-2-sap-khep-kin-18824110217083289.chn" title="Đọc toàn bộ">Đọc toàn bộ</a>
+          <a target="_blank" className="doctoanbo" href={href} title="{title}">Đọc toàn bộ</a>
         </div>
       </div>
     </div>
@@ -41,4 +40,4 @@ const HomeContent = ({ content }: { content: string }) => {
   );
 }
 
-export default HomeContent
+export default HomeItems

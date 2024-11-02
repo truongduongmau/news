@@ -1,42 +1,17 @@
-"use client"
+import HomeMain from "../components/home/home-main";
 
-import { useCallback, useState } from "react";
-import HomeContent from "../components/homeContent";
+const Home = async () => {
+  const apiUrl = process.env.API_URL;
+  const localhost = process.env.LOCAL_HOST
+  const salt = (new Date()).getTime();
+  const page = 1;
 
-const Home = ({ content }: { content: string }) => {
-  const [isLoading, setIsLoading] = useState(false)
-
-  const nextPage = useCallback(() => {
-    setIsLoading(true)
-  }, [])
-
+  const url = `${apiUrl}/doc-nhanh/trang-${page}.chn?${salt}`;
+  const data = await fetch(`${localhost}/api?url=${url}`, { cache: 'no-store' })
+  const content = await data.text();
   return (
     <>
-      <div className="fastnews-main">
-        <h1 className="tinnhanh_title">
-          <span>Tin mới cập nhật</span>
-        </h1>
-        <div className="nviewer" id="fastnews-main-contents">
-          <HomeContent content={content} />
-        </div>
-        <div hidden={!isLoading} className="loadingio-spinner-spinner-l1xppaoi24" >
-          <div className="ldio-jkw3q3bi0aa">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-        <div style={{ cursor: "pointer" }} className="buttons"><button className="card card-small" onClick={() => nextPage()}>Đọc thêm</button></div>
-      </div>
+      <HomeMain content={content}></HomeMain>
     </>
   );
 }
