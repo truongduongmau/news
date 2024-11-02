@@ -8,14 +8,6 @@ const HomeContent = ({ content }) => {
   const fastNews = useRef<HTMLDivElement>(null)
   if (isServer) return (<></>)
 
-  interface IOptions {
-    options: string[]
-  }
-
-  const CardArray: React.FC<IOptions> = ({ options }) => {
-    return <>{options.map(opt => opt)}</>
-  }
-
   const dom_document = new DOMParser().parseFromString(content, "text/html");
   const news: NodeListOf<Element> = dom_document.querySelectorAll("div.list-fast-news > .item") || [];
 

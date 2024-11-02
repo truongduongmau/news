@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import HomeContent from "../components/homeContent/page";
-import { cursorTo } from "readline";
 
 const Home = ({ content }) => {
   const [isLoading, setIsLoading] = useState(false)
