@@ -1,51 +1,43 @@
 "use client"
 
-import { ReactElement, ReactNode, useEffect, useRef } from "react";
-import useIsServer from "../useHook/useIsServer";
+import { useCallback, useState } from "react";
+import HomeContent from "../components/homeContent/page";
+import { cursorTo } from "readline";
 
 const Home = ({ content }) => {
-  const isServer = useIsServer()
-  const fastNews = useRef<HTMLDivElement>(null)
-  if (isServer) return (<></>)
+  const [isLoading, setIsLoading] = useState(false)
 
-  interface IOptions {
-    options: string[]
-  }
-
-  const CardArray: React.FC<IOptions> = ({ options }) => {
-    return <>{options.map(opt => opt)}</>
-  }
-
-  const dom_document = new DOMParser().parseFromString(content, "text/html");
-  const news: NodeListOf<Element> = dom_document.querySelectorAll("div.list-fast-news > .item") || [];
-
-  const list = Array.apply(null, Array(news.length)).map((v, key) => news[key])
-  const items = list.map((item, key) => {
-    const time = item.querySelector("span.time");
-    const timeText = (time?.textContent || "").replace("(", "").replace(")", "");
-    const title = item.querySelector(".title-wrap > a")?.textContent
-    const href = item.querySelector(".title-wrap > a")?.getAttribute("href")?.toString();
-    const content = item.querySelector(".nv-details > .abs")?.textContent
-    return <div className="item expandable active">
-      <div className="nv-text-cont">
-        <div className="timeTitle time-ago" title={timeText}>{timeText}</div>
-        <div className="title-wrap">
-          <a target="_blank" className="news-title" href={href} title="{title}">{title}</a>
-        </div>
-      </div>
-      <div className="nv-details">
-        <span className="time">(02/11/2024 17:19)</span>
-        <div className="abs">{content}</div>
-        <div className="text-right">
-          <a target="_blank" className="doctoanbo" href="/bat-dong-san-tpthu-duc-tang-toc-cuoi-nam-nho-vanh-dai-2-sap-khep-kin-18824110217083289.chn" title="Đọc toàn bộ">Đọc toàn bộ</a>
-        </div>
-      </div>
-    </div>
-  })
+  const nextPage = useCallback(() => {
+    setIsLoading(true)
+  }, [])
 
   return (
     <>
-      {items}
+      <div className="fastnews-main">
+        <h1 className="tinnhanh_title">
+          <span>Tin mới cập nhật</span>
+        </h1>
+        <div className="nviewer" id="fastnews-main-contents">
+          <HomeContent content={content} />
+        </div>
+        <div hidden={!isLoading} className="loadingio-spinner-spinner-l1xppaoi24" >
+          <div className="ldio-jkw3q3bi0aa">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div style={{cursor: "pointer"}} className="buttons"><button className="card card-small" onClick={() => nextPage()}>Đọc thêm</button></div>
+      </div>
     </>
   );
 }
