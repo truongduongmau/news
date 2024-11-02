@@ -9,7 +9,7 @@ export default async function App() {
 
   const url = `${apiUrl}/doc-nhanh/trang-${page}.chn?${salt}`;
   const data = await fetch(`${localhost}/api?url=${url}`, { cache: 'no-store' })
-  const content = await data.text() || "";
+  const content = await data.text();
 
   return (
     <>

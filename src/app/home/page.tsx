@@ -1,9 +1,9 @@
 "use client"
 
 import { useCallback, useState } from "react";
-import HomeContent from "../components/homeContent/page";
+import HomeContent from "../components/homeContent";
 
-const Home = ({ content = "" }: { content: string }) => {
+const Home = ({ content }: { content: string }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const nextPage = useCallback(() => {

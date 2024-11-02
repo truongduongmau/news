@@ -2,7 +2,7 @@
 
 import useIsServer from "@/app/useHook/useIsServer";
 
-const HomeContent = ({ content = "" }: { content: string }) => {
+const HomeContent = ({ content }: { content: string }) => {
   const isServer = useIsServer()
 
   if (isServer) return (<></>)
