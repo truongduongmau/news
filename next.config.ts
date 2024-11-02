@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  basePath: '/.',
-  skipTrailingSlashRedirect: true,
+  basePath: '/news',
+  reactStrictMode: true,
   distDir: './docs',
   output: "export",
 };
